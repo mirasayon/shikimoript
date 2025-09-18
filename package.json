@@ -1,0 +1,57 @@
+{
+    "name": "shikimoript",
+    "version": "0.0.1",
+    "description": "SHIKIMORI for javascriPT - Universal shikimori.one API wrapper for modern Javascript",
+    "type": "module",
+    "exports": {
+        ".": "./dist/app/index.js",
+        "./errors": "./dist/errors/api-errors.js",
+        "./types/*": "./dist/types/*"
+    },
+    "scripts": {
+        "build": "rm -rf ./dist && tsc",
+        "builder": "rm -rf ./dist && tsc --watch",
+        "inspector": "tsc --watch --noEmit",
+        "example": "node --watch ./examples/index.ts",
+        "test": "node ./tests/index.test.ts"
+    },
+    "devDependencies": {
+        "@types/node": "^24.5.2",
+        "typescript": "^5.9.2"
+    },
+    "keywords": [
+        "shikimori",
+        "animeapi",
+        "shikimori-nodejs",
+        "shikimori-js",
+        "shikimori-wrapper",
+        "shiki.js",
+        "shikimori.js",
+        "shiki",
+        "shikimoript",
+        "shikimori-api",
+        "anime-api"
+    ],
+    "homepage": "https://github.com/mirasayon/shikimoript#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mirasayon/shikimoript.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mirasayon/shikimoript/issues"
+    },
+    "author": {
+        "email": "mirasayon@ya.ru",
+        "name": "Miralisher",
+        "url": "https://mirasayon.com"
+    },
+    "files": [
+        "dist",
+        ".github"
+    ],
+    "engines": {
+        "node": ">=18"
+    },
+    "license": "MIT"
+}
+
