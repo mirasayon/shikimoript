@@ -1,6 +1,5 @@
 import { ShikimoriApi } from "shikimoript";
 
-// import { ApiClient } from "shikimoript";
 const shikimori = new ShikimoriApi();
 const anime = await shikimori.animes.byId({
     id: 20,

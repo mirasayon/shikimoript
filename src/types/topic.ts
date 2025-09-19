@@ -1,4 +1,4 @@
-import type { DateTime, Linkable, LinkedId, LinkedType } from "./common.js";
+import type { DateTime, LinkedId, LinkedType } from "./common.js";
 import type { Forum } from "./forum.js";
 import type { UserBasic } from "./user.js";
 
@@ -39,7 +39,7 @@ export type TopicType =
     | "Topics::NewsTopic"
     | "Topics::NewsTopics::ContestStatusTopic";
 
-export interface TopicData<T extends Linkable = Linkable> {
+export interface TopicData<T extends {} = {}> {
     id: TopicId;
     topic_title: string;
     body: string;

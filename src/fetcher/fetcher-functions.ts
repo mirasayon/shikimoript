@@ -1,8 +1,8 @@
 import { BASE_URL, MILLISECONDS_IN_MINUTE, MILLISECONDS_IN_SECOND } from "../constants/constants.js";
 import { MaximumFetchRequestsPerMinuteExceededError, MaximumFetchRequestsPerSecondExceededError, ShikimoriApiError } from "../errors/api-errors.js";
-import type { CustomFetcher } from "../types/custom-fetcher.js";
+import type { ApiFetcherType } from "../types/custom-fetcher.js";
 
-export async function doRequest<T extends any>(path: string, options: RequestInit, fetcher: CustomFetcher): Promise<T> {
+export async function doRequest<T extends any>(path: string, options: RequestInit, fetcher: ApiFetcherType): Promise<T> {
     const url = new URL(path, BASE_URL);
     const text = await fetcher(url, options);
     if (!text) {
@@ -15,7 +15,7 @@ export async function doRequest<T extends any>(path: string, options: RequestIni
     }
 }
 
-export type LimitedRequestFunction = <T extends any, S extends string>(path: S, options: RequestInit, fetcher: CustomFetcher) => Promise<T>;
+export type LimitedRequestFunction = <T extends any, S extends string>(path: S, options: RequestInit, fetcher: ApiFetcherType) => Promise<T>;
 /** Limited Request Factory */
 export function limitedRequestFactory(maxCallsPerSecond: number, maxCallsPerMinute: number): LimitedRequestFunction {
     let secondFetchCount = 0;

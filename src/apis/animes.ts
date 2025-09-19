@@ -6,7 +6,7 @@ import type {
     AnimeRating,
     AnimeId,
     AnimeTopicKind,
-    AnimeBasic,
+    AnimeBasicData,
     AnimeData,
     AnimeRelationData,
 } from "../types/anime.js";
@@ -53,13 +53,13 @@ export interface AnimesTopicsParams {
  */
 export class AnimesApi {
     constructor(request: ApiRequestHandler) {
-        const list = (params: AnimesParams): Promise<AnimeBasic[]> => request(`/animes`, params, "GET");
+        const list = (params: AnimesParams): Promise<AnimeBasicData[]> => request(`/animes`, params, "GET");
 
         const byId = ({ id }: IdField<AnimeId>): Promise<AnimeData> => request(`/animes/${id}`, {}, "GET");
 
         const roles = ({ id }: IdField<AnimeId>): Promise<RoleData[]> => request(`/animes/${id}/roles`, {}, "GET");
 
-        const similar = ({ id }: IdField<AnimeId>): Promise<AnimeBasic[]> => request(`/animes/${id}/similar`, {}, "GET");
+        const similar = ({ id }: IdField<AnimeId>): Promise<AnimeBasicData[]> => request(`/animes/${id}/similar`, {}, "GET");
 
         const related = ({ id }: IdField<AnimeId>): Promise<AnimeRelationData[]> => request(`/animes/${id}/related`, {}, "GET");
 
@@ -69,7 +69,8 @@ export class AnimesApi {
 
         const externalLinks = ({ id }: IdField<AnimeId>): Promise<ExternalLink[]> => request(`/animes/${id}/external_links`, {}, "GET");
 
-        const topics = ({ id, ...params }: AnimesTopicsParams): Promise<TopicData<AnimeBasic>[]> => request(`/animes/${id}/topics`, params, "GET");
+        const topics = ({ id, ...params }: AnimesTopicsParams): Promise<TopicData<AnimeBasicData>[]> =>
+            request(`/animes/${id}/topics`, params, "GET");
         this.list = list;
         this.byId = byId;
         this.roles = roles;
@@ -101,7 +102,7 @@ export class AnimesApi {
      */
     public readonly similar;
     /**
-     * Список связанных аниме
+     * Список связанных аниме или манги
      * @param params
      */
     public readonly related;

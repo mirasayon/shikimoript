@@ -2,7 +2,7 @@ import type { IdField } from "./common.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
 import type { NoticeType } from "../types/common.js";
 import type { DialogData, DialogId } from "../types/dialog.js";
-import type { Message } from "../types/message.js";
+import type { MessageData } from "../types/message.js";
 
 /**
  * Диалоги
@@ -11,7 +11,7 @@ import type { Message } from "../types/message.js";
 export class DialogsApi {
     constructor(request: ApiRequestHandler) {
         const list = (): Promise<DialogData[]> => request("/dialogs", {}, "GET");
-        const byId = ({ id }: IdField<DialogId>): Promise<Message[]> => request(`/dialogs/${id}`, {}, "GET");
+        const byId = ({ id }: IdField<DialogId>): Promise<MessageData[]> => request(`/dialogs/${id}`, {}, "GET");
         const destroy = ({ id }: IdField<DialogId>): Promise<NoticeType> => request(`/dialogs/${id}`, {}, "DELETE");
 
         this.list = list;
@@ -33,7 +33,7 @@ export class DialogsApi {
      * Требует `messages` OAuth-право
      * @param params Параметры запроса
      */
-    public readonly byId: ({ id }: IdField<DialogId>) => Promise<Message[]>;
+    public readonly byId: ({ id }: IdField<DialogId>) => Promise<MessageData[]>;
 
     /**
      * Удалить диалог

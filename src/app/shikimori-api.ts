@@ -2,7 +2,7 @@ import { limitedRequestFactory, type LimitedRequestFunction } from "../fetcher/f
 import { DEFAULT_USER_AGENT, MAX_CALLS_PER_MINUTE, MAX_CALLS_PER_SECOND } from "../constants/constants.js";
 import { defaultFetcher } from "../fetcher/default-fetcher.js";
 import type { ApiRequestHandler, ApiRequestParams, AuthToken, RequestMethod } from "../types/auth-layer-api-options.js";
-import type { CustomFetcher } from "../types/custom-fetcher.js";
+import type { ApiFetcherType } from "../types/custom-fetcher.js";
 import type { ShikimoriApiOptions } from "../types/shikimori-api-options.js";
 import { AbuseRequestsApi } from "../apis/abuse-requests.js";
 import { VideosApi } from "../apis/videos.js";
@@ -43,7 +43,7 @@ import { UserIgnoresApi } from "../apis/user-ignores.js";
 export class ShikimoriApi {
     private readonly clientName: string;
     private _accessToken: AuthToken;
-    private readonly fetcher: CustomFetcher;
+    private readonly fetcher: ApiFetcherType;
 
     constructor({
         token,

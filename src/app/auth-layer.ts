@@ -2,7 +2,7 @@ import { DEFAULT_USER_AGENT, TOKEN_PATH } from "../constants/constants.js";
 import { doRequest } from "../fetcher/fetcher-functions.js";
 import { defaultFetcher } from "../fetcher/default-fetcher.js";
 import type { AccessToken, AuthLayerOptions } from "../types/auth-layer-api-options.js";
-import type { CustomFetcher } from "../types/custom-fetcher.js";
+import type { ApiFetcherType } from "../types/custom-fetcher.js";
 
 /**
  * Слой авторизации на основе OAuth2
@@ -11,7 +11,7 @@ import type { CustomFetcher } from "../types/custom-fetcher.js";
  */
 export class AuthLayerApi {
     private clientName: string | undefined;
-    private fetcher: CustomFetcher;
+    private fetcher: ApiFetcherType;
     private clientSecret: string;
     private redirectURI: string | undefined;
     private clientId: string;

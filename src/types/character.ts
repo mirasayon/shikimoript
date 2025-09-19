@@ -1,7 +1,7 @@
-import type { DateTime, Linkable } from "./common.js";
-import type { AnimeBasic } from "./anime.js";
+import type { DateTime } from "./common.js";
+import type { AnimeBasicData } from "./anime.js";
 import type { ImageSet } from "./image.js";
-import type { MangaBasic } from "./manga.js";
+import type { MangaBasicData } from "./manga.js";
 import type { PersonBasic } from "./person.js";
 import type { TopicId } from "./topic.js";
 
@@ -29,10 +29,10 @@ export interface Character {
     topic_id: TopicId;
     updated_at: DateTime;
     seyu: PersonBasic[];
-    animes: RoleBased<AnimeBasic>[];
-    mangas: RoleBased<MangaBasic>[];
+    animes: RoleBased<AnimeBasicData>[];
+    mangas: RoleBased<MangaBasicData>[];
 }
 
 /** @interface */
-export type CharacterBasic = Pick<Character, "id" | "name" | "russian" | "image" | "url"> & Linkable;
+export type CharacterBasic = Pick<Character, "id" | "name" | "russian" | "image" | "url">;
 

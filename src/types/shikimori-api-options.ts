@@ -1,4 +1,4 @@
-import type { CustomFetcher } from "./custom-fetcher.js";
+import type { ApiFetcherType } from "./custom-fetcher.js";
 import type { AuthToken, ClientNameOptionsField } from "./auth-layer-api-options.js";
 
 /** Опции для конфигурирования обёртки Shikimori */
@@ -48,15 +48,12 @@ export interface FetherOption {
      *
      * @defaultValue
      * const defaultFetcher: CustomFetcher = async (url, options = {}) => {
-     *     try {
-     *         const res = await globalThis.fetch(url, { ...options });
-     *         return await res.text();
-     *     } catch {
-     *         return null;
-     *     }
+     *     const res = await globalThis.fetch(url, { ...options });
+     *     return await res.text();
+     *
      * };
      */
 
-    fetcher?: CustomFetcher;
+    fetcher?: ApiFetcherType;
 }
 

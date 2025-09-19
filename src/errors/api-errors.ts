@@ -21,3 +21,10 @@ export class MaximumFetchRequestsPerSecondExceededError extends Error {
     }
 }
 
+export class ShikimoriApiNotFoundError extends Error {
+    constructor() {
+        super("Shikimori Api Response Not Found");
+        this.name = "ShikimoriApiNotFoundError";
+    }
+}
+

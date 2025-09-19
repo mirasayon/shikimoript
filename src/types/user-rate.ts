@@ -1,6 +1,6 @@
 import type { DateTime } from "./common.js";
-import type { AnimeBasic, AnimeId } from "./anime.js";
-import type { MangaBasic, MangaId } from "./manga.js";
+import type { AnimeBasicData, AnimeId } from "./anime.js";
+import type { MangaBasicData, MangaId } from "./manga.js";
 import type { RanobeId } from "./ranobe.js";
 import type { UserBasic, UserId } from "./user.js";
 
@@ -24,10 +24,10 @@ export interface UserRate {
     updated_at: DateTime;
 }
 
-export interface UserRateExtended<T extends AnimeBasic | MangaBasic> extends UserRate {
+export interface UserRateExtended<T extends AnimeBasicData | MangaBasicData> extends UserRate {
     user: UserBasic;
-    anime: T extends AnimeBasic ? AnimeBasic : null;
-    manga: T extends MangaBasic ? MangaBasic : null;
+    anime: T extends AnimeBasicData ? AnimeBasicData : null;
+    manga: T extends MangaBasicData ? MangaBasicData : null;
 }
 
 export interface UserRateTemplate {

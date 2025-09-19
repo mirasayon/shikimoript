@@ -5,7 +5,7 @@ export type NoticeSuccess = NoticeType & { success: boolean };
 
 export type DateTime = string;
 
-export interface Linkable {}
+// export interface Linkable {}
 export type LinkedId = number;
 export type LinkedType =
     | "Anime"

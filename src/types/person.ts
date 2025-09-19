@@ -1,8 +1,8 @@
-import type { DateTime, Linkable } from "./common.js";
-import type { AnimeBasic } from "./anime.js";
+import type { DateTime } from "./common.js";
+import type { AnimeBasicData } from "./anime.js";
 import type { CharacterBasic } from "./character.js";
 import type { ImageSet } from "./image.js";
-import type { MangaBasic } from "./manga.js";
+import type { MangaBasicData } from "./manga.js";
 import type { TopicId } from "./topic.js";
 
 export type PersonKind = "seyu" | "mangaka" | "producer";
@@ -12,12 +12,12 @@ export type PersonGroupedRole = [string, number];
 
 export interface PersonRole {
     characters: CharacterBasic[];
-    anime: AnimeBasic[];
+    anime: AnimeBasicData[];
 }
 
 export interface PersonWork {
-    anime: AnimeBasic | null;
-    manga: MangaBasic | null;
+    anime: AnimeBasicData | null;
+    manga: MangaBasicData | null;
     role: string;
 }
 
@@ -51,5 +51,5 @@ export interface PersonData {
 }
 
 /** @interface */
-export type PersonBasic = Pick<PersonData, "id" | "name" | "russian" | "image" | "url"> & Linkable;
+export type PersonBasic = Pick<PersonData, "id" | "name" | "russian" | "image" | "url">;
 

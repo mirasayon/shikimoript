@@ -1,7 +1,8 @@
-import type { DateTime, Linkable } from "./common.js";
-import type { ContentData, ContentRelation } from "./content.js";
+import type { DateTime } from "./common.js";
+import type { CommonContentData, ContentRelation } from "./content.js";
 import type { GenreData } from "./genre.js";
 import type { ImageSet } from "./image.js";
+import type { MangaBasicData } from "./manga.js";
 import type { Studio } from "./studio.js";
 import type { VideoData } from "./video.js";
 
@@ -25,7 +26,7 @@ export type AnimeOrder =
     | "created_at"
     | "created_at_desc";
 
-export interface AnimeData extends ContentData {
+export interface AnimeData extends CommonContentData {
     id: AnimeId;
     kind: AnimeKind;
     status: AnimeStatus;
@@ -44,12 +45,11 @@ export interface AnimeData extends ContentData {
 }
 
 /** @interface */
-export type AnimeRelationData = ContentRelation & { anime: AnimeBasic };
+export type AnimeRelationData = ContentRelation & { anime: AnimeBasicData | null; manga: MangaBasicData | null };
 
 /** @interface */
-export type AnimeBasic = Pick<
+export type AnimeBasicData = Pick<
     AnimeData,
     "id" | "name" | "russian" | "image" | "url" | "kind" | "score" | "status" | "episodes" | "episodes_aired" | "aired_on" | "released_on"
-> &
-    Linkable;
+>;
 

@@ -12,7 +12,7 @@ export interface RateStatusStat {
 export type RateScoreStat = { [key in "name" | "value"]: number };
 export type DayType = string;
 
-export interface ContentData {
+export interface CommonContentData {
     name: string;
     russian: string;
     image: ImageSet;

@@ -1,7 +1,7 @@
-import type { AnimeBasic } from "./anime.js";
+import type { AnimeBasicData } from "./anime.js";
 import type { DateTime } from "./common.js";
 import type { ImageSet } from "./image.js";
-import type { MangaBasic } from "./manga.js";
+import type { MangaBasicData } from "./manga.js";
 
 export type UserId = number | string;
 
@@ -83,7 +83,7 @@ export interface UserHistoryRecord {
     id: UserHistoryRecordId;
     created_at: DateTime;
     description: string;
-    target: AnimeBasic | MangaBasic | null;
+    target: AnimeBasicData | MangaBasicData | null;
 }
 
 export interface UserUnreadMessages {

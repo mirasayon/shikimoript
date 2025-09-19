@@ -1,9 +1,9 @@
-import type { AnimeBasic } from "../types/anime.js";
+import type { AnimeBasicData } from "../types/anime.js";
 import type { BanData } from "../types/ban.js";
 import type { ClubBasic } from "../types/club.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
-import type { MangaBasic } from "../types/manga.js";
-import type { Message, MessageType } from "../types/message.js";
+import type { MangaBasicData } from "../types/manga.js";
+import type { MessageData, MessageType } from "../types/message.js";
 import type { UserRateExtended, UserRateStatus } from "../types/user-rate.js";
 import type { UserData, UserBasic, UserFavourites, UserHistoryRecord, UserId, UserUnreadMessages } from "../types/user.js";
 import type { IdField } from "./common.js";
@@ -70,11 +70,11 @@ export class UsersApi {
 
         const clubs = ({ id }: IdField<UserId>): Promise<ClubBasic[]> => req(`/users/${id}/clubs`, {}, "GET");
 
-        const animeRates = ({ id, ...params }: UsersAnimeRatesParams): Promise<UserRateExtended<AnimeBasic>> => {
+        const animeRates = ({ id, ...params }: UsersAnimeRatesParams): Promise<UserRateExtended<AnimeBasicData>> => {
             return req(`/users/${id}/anime_rates`, params, "GET");
         };
 
-        const mangaRates = ({ id, ...params }: UsersMangaRatesParams): Promise<UserRateExtended<MangaBasic>> => {
+        const mangaRates = ({ id, ...params }: UsersMangaRatesParams): Promise<UserRateExtended<MangaBasicData>> => {
             return req(`/users/${id}/manga_rates`, params, "GET");
         };
 
@@ -82,7 +82,7 @@ export class UsersApi {
             return req(`/users/${id}/favourites`, {}, "GET");
         };
 
-        const messages = ({ id, ...params }: UsersMessagesParams): Promise<Message[]> => {
+        const messages = ({ id, ...params }: UsersMessagesParams): Promise<MessageData[]> => {
             return req(`/users/${id}/messages`, params, "GET");
         };
 

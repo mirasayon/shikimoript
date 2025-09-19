@@ -1,7 +1,7 @@
 import type { ExternalLink } from "../types/external-link.js";
 import type { Franchise } from "../types/franchise.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
-import type { MangaData, MangaBasic, MangaId, MangaKind, MangaOrder, MangaRelation, MangaStatus } from "../types/manga.js";
+import type { MangaData, MangaBasicData, MangaId, MangaKind, MangaOrder, MangaRelation, MangaStatus } from "../types/manga.js";
 import type { RoleData } from "../types/role.js";
 import type { TopicData } from "../types/topic.js";
 import type { UserRateStatus } from "../types/user-rate.js";
@@ -37,14 +37,14 @@ export interface MangaTopicsParams {
  */
 export class MangasApi {
     constructor(request: ApiRequestHandler) {
-        const list = (params: MangasParams): Promise<MangaBasic[]> => request(`/mangas`, params, "GET");
+        const list = (params: MangasParams): Promise<MangaBasicData[]> => request(`/mangas`, params, "GET");
         const byId = ({ id }: IdField<MangaId>): Promise<MangaData> => request(`/mangas/${id}`, {}, "GET");
         const roles = ({ id }: IdField<MangaId>): Promise<RoleData[]> => request(`/mangas/${id}/roles`, {}, "GET");
-        const similar = ({ id }: IdField<MangaId>): Promise<MangaBasic[]> => request(`/mangas/${id}/similar`, {}, "GET");
+        const similar = ({ id }: IdField<MangaId>): Promise<MangaBasicData[]> => request(`/mangas/${id}/similar`, {}, "GET");
         const related = ({ id }: IdField<MangaId>): Promise<MangaRelation[]> => request(`/mangas/${id}/relation`, {}, "GET");
         const franchise = ({ id }: IdField<MangaId>): Promise<Franchise> => request(`/mangas/${id}/franchise`, {}, "GET");
         const externalLinks = ({ id }: IdField<MangaId>): Promise<ExternalLink[]> => request(`/mangas/${id}/external_links`, {}, "GET");
-        const topics = ({ id, ...params }: MangaTopicsParams): Promise<TopicData<MangaBasic>[]> => request(`/mangas/${id}/topics`, params, "GET");
+        const topics = ({ id, ...params }: MangaTopicsParams): Promise<TopicData<MangaBasicData>[]> => request(`/mangas/${id}/topics`, params, "GET");
 
         this.list = list;
         this.byId = byId;
@@ -60,7 +60,7 @@ export class MangasApi {
      * Получить список манги
      * @param params Параметры фильтрации и пагинации
      */
-    public readonly list: (params: MangasParams) => Promise<MangaBasic[]>;
+    public readonly list: (params: MangasParams) => Promise<MangaBasicData[]>;
 
     /**
      * Получить мангу по `MangaId`
@@ -78,7 +78,7 @@ export class MangasApi {
      * Получить список похожей манги
      * @param params Параметры запроса (содержат `id`)
      */
-    public readonly similar: ({ id }: IdField<MangaId>) => Promise<MangaBasic[]>;
+    public readonly similar: ({ id }: IdField<MangaId>) => Promise<MangaBasicData[]>;
 
     /**
      * Получить список связанной манги
@@ -102,6 +102,6 @@ export class MangasApi {
      * Получить список топиков манги
      * @param params Параметры запроса (содержат `id`)
      */
-    public readonly topics: ({ id, ...params }: MangaTopicsParams) => Promise<TopicData<MangaBasic>[]>;
+    public readonly topics: ({ id, ...params }: MangaTopicsParams) => Promise<TopicData<MangaBasicData>[]>;
 }
 

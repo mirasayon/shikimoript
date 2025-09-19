@@ -1,4 +1,4 @@
-import type { CustomFetcher } from "./custom-fetcher.js";
+import type { ApiFetcherType } from "./custom-fetcher.js";
 import type { FetherOption } from "./shikimori-api-options.js";
 
 export type ApiRequestParams = {

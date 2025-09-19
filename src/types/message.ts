@@ -1,11 +1,11 @@
-import type { DateTime, Linkable, LinkedId, LinkedType } from "./common.js";
+import type { DateTime, LinkedId, LinkedType } from "./common.js";
 import type { UserBasic } from "./user.js";
 
 export type MessageId = number;
 export type MessageKind = "Private" | "FriendRequest" | "anons" | "ongoing" | "released";
 export type MessageType = "inbox" | "private" | "sent" | "news" | "notifications";
 
-export interface Message<T extends Linkable = Linkable> {
+export interface MessageData<T extends {} = {}> {
     id: MessageId;
     kind: MessageKind;
     read: boolean;
@@ -20,5 +20,5 @@ export interface Message<T extends Linkable = Linkable> {
 }
 
 /** @interface */
-export type MessageBasic = Omit<Message, "from" | "to">;
+export type MessageBasicData = Omit<MessageData, "from" | "to">;
 

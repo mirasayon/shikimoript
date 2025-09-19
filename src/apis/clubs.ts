@@ -1,8 +1,8 @@
-import type { AnimeBasic } from "../types/anime.js";
+import type { AnimeBasicData } from "../types/anime.js";
 import type { CharacterBasic } from "../types/character.js";
 import type { ClubId, ClubUpdateTemplate, ClubBasic, Club } from "../types/club.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
-import type { MangaBasic } from "../types/manga.js";
+import type { MangaBasicData } from "../types/manga.js";
 import type { RanobeBasic } from "../types/ranobe.js";
 import type { TopicData } from "../types/topic.js";
 import type { UserBasic } from "../types/user.js";
@@ -37,9 +37,9 @@ export class ClubsApi {
 
         const update = ({ id }: ClubsUpdateParams): Promise<Club> => request(`/clubs/${id}`, {}, "PATCH");
 
-        const animes = ({ id, ...params }: ClubsContentParams): Promise<AnimeBasic[]> => request(`/clubs/${id}/animes`, params, "GET");
+        const animes = ({ id, ...params }: ClubsContentParams): Promise<AnimeBasicData[]> => request(`/clubs/${id}/animes`, params, "GET");
 
-        const mangas = ({ id, ...params }: ClubsContentParams): Promise<MangaBasic[]> => request(`/clubs/${id}/mangas`, params, "GET");
+        const mangas = ({ id, ...params }: ClubsContentParams): Promise<MangaBasicData[]> => request(`/clubs/${id}/mangas`, params, "GET");
 
         const ranobe = ({ id, ...params }: ClubsContentParams): Promise<RanobeBasic[]> => request(`/clubs/${id}/ranobe`, params, "GET");
 
@@ -90,13 +90,13 @@ export class ClubsApi {
      * Данные Аниме клуба
      * @param params
      */
-    public readonly animes: ({ id, ...params }: ClubsContentParams) => Promise<AnimeBasic[]>;
+    public readonly animes: ({ id, ...params }: ClubsContentParams) => Promise<AnimeBasicData[]>;
 
     /**
      * Данные Манга клуба
      * @param params
      */
-    public readonly mangas: ({ id, ...params }: ClubsContentParams) => Promise<MangaBasic[]>;
+    public readonly mangas: ({ id, ...params }: ClubsContentParams) => Promise<MangaBasicData[]>;
     /**
      * Данные Ранобэ клуба
      * @param params

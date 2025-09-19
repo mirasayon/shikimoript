@@ -1,8 +1,7 @@
-import type { Linkable } from "./common.js";
-import type { AnimeBasic } from "./anime.js";
+import type { AnimeBasicData } from "./anime.js";
 import type { CharacterBasic } from "./character.js";
 import type { ImageData, ImageSet } from "./image.js";
-import type { MangaBasic } from "./manga.js";
+import type { MangaBasicData } from "./manga.js";
 import type { StylesId } from "./style.js";
 import type { TopicId } from "./topic.js";
 import type { UserBasic } from "./user.js";
@@ -36,11 +35,11 @@ export interface Club {
     style_id: StylesId | null;
     images: ImageData[];
     members: UserBasic[];
-    animes: AnimeBasic[];
-    mangas: MangaBasic[];
+    animes: AnimeBasicData[];
+    mangas: MangaBasicData[];
     characters: CharacterBasic[];
 }
 
 /** @interface */
-export type ClubBasic = Pick<Club, "id" | "name" | "logo" | "is_censored" | "join_policy" | "comment_policy"> & Linkable;
+export type ClubBasic = Pick<Club, "id" | "name" | "logo" | "is_censored" | "join_policy" | "comment_policy">;
 
