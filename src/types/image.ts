@@ -1,5 +1,8 @@
 export interface ImageSet {
-    [size: string]: string | undefined;
+    original: string;
+    preview: string;
+    x96: string;
+    x48: string;
 }
 
 export type ImageId = number;
