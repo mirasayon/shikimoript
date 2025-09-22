@@ -1,5 +1,5 @@
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
-import type { Publisher } from "../types/publisher.js";
+import type { PublisherData } from "../types/publisher.js";
 
 /**
  * Издатели
@@ -7,7 +7,7 @@ import type { Publisher } from "../types/publisher.js";
  */
 export class PublishersApi {
     constructor(request: ApiRequestHandler) {
-        const list = (): Promise<Publisher[]> => request("/publishers", {}, "GET");
+        const list = (): Promise<PublisherData[]> => request("/publishers", {}, "GET");
         this.list = list;
     }
 
@@ -15,6 +15,6 @@ export class PublishersApi {
      * Получить список издателей
      * @param params Параметры запроса (отсутствуют)
      */
-    public readonly list: () => Promise<Publisher[]>;
+    public readonly list: () => Promise<PublisherData[]>;
 }
 

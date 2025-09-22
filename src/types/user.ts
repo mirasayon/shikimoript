@@ -1,4 +1,4 @@
-import type { AnimeBasicData } from "./anime.js";
+import type { AnimeBasicData } from "./animes.js";
 import type { DateTime } from "./common.js";
 import type { ImageSet } from "./image.js";
 import type { MangaBasicData } from "./manga.js";

@@ -1,5 +1,5 @@
-import type { ExternalLink } from "../types/external-link.js";
-import type { Franchise } from "../types/franchise.js";
+import type { ExternalLinkData } from "../types/external-link.js";
+import type { FranchiseData } from "../types/franchise.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
 import type { RanobeOrder, RanobeKind, RanobeStatus, RanobeId, RanobeBasic, Ranobe, RanobeRelation } from "../types/ranobe.js";
 import type { RoleData } from "../types/role.js";
@@ -70,13 +70,13 @@ export class RanobeApi {
      * Получить всю франшизу
      * @param params Параметры запроса (содержат `id`)
      */
-    public readonly franchise: ({ id }: IdField<RanobeId>) => Promise<Franchise>;
+    public readonly franchise: ({ id }: IdField<RanobeId>) => Promise<FranchiseData>;
 
     /**
      * Получить список внешних ссылок ранобэ
      * @param params Параметры запроса (содержат `id`)
      */
-    public readonly externalLinks: ({ id }: IdField<RanobeId>) => Promise<ExternalLink[]>;
+    public readonly externalLinks: ({ id }: IdField<RanobeId>) => Promise<ExternalLinkData[]>;
 
     /**
      * Получить список топиков ранобэ
@@ -90,8 +90,8 @@ export class RanobeApi {
         const roles = ({ id }: IdField<RanobeId>): Promise<RoleData[]> => request(`/ranobes/${id}/roles`, {}, "GET");
         const similar = ({ id }: IdField<RanobeId>): Promise<RanobeBasic[]> => request(`/ranobes/${id}/similar`, {}, "GET");
         const related = ({ id }: IdField<RanobeId>): Promise<RanobeRelation[]> => request(`/ranobes/${id}/relation`, {}, "GET");
-        const franchise = ({ id }: IdField<RanobeId>): Promise<Franchise> => request(`/ranobes/${id}/franchise`, {}, "GET");
-        const externalLinks = ({ id }: IdField<RanobeId>): Promise<ExternalLink[]> => request(`/ranobes/${id}/external_links`, {}, "GET");
+        const franchise = ({ id }: IdField<RanobeId>): Promise<FranchiseData> => request(`/ranobes/${id}/franchise`, {}, "GET");
+        const externalLinks = ({ id }: IdField<RanobeId>): Promise<ExternalLinkData[]> => request(`/ranobes/${id}/external_links`, {}, "GET");
         const topics = ({ id, ...params }: RanobeTopicsParams): Promise<TopicData<RanobeBasic>[]> => request(`/ranobes/${id}/topics`, params, "GET");
 
         this.list = list;

@@ -1,5 +1,5 @@
 import type { ImageSet } from "./image.js";
-import type { Publisher } from "./publisher.js";
+import type { PublisherData } from "./publisher.js";
 import type { TopicId } from "./topic.js";
 import type { UserRateBasic } from "./user-rate.js";
 
@@ -37,12 +37,12 @@ export interface CommonContentData {
     rates_scores_stats: RateScoreStat[];
     rates_statuses_stats: RateStatusStat[];
     licensors: string[];
-    publishers: Publisher[];
+    publishers: PublisherData[];
     user_rate: UserRateBasic | null;
 }
 
 export interface ContentRelation {
     relation: string;
-    relation_string: string;
+    relation_russian: string;
 }
 

@@ -1,6 +1,6 @@
 import type { DateTime } from "./common.js";
 
-export interface ExternalLink {
+export interface ExternalLinkData {
     id: number | null;
     kind: string;
     url: string;

@@ -1,4 +1,4 @@
-import type { AnimeId } from "../types/anime.js";
+import type { AnimeId } from "../types/animes.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
 import type { VideoData, VideoId } from "../types/video.js";
 

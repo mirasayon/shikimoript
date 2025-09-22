@@ -1,19 +1,20 @@
 export interface ContentConstants {
-  kind: string[];
-  status: string[];
+    kind: string[];
+    status: string[];
 }
 
 export interface UserRateConstants {
-  status: string[];
+    status: string[];
 }
 
 export interface ClubConstants {
-  join_policy: string[];
-  comment_policy: string[];
-  image_upload_policy: string[];
+    join_policy: string[];
+    comment_policy: string[];
+    image_upload_policy: string[];
 }
 
-export interface Smiley {
-  bbcode: string;
-  path: string;
+export interface SmileyType {
+    bbcode: string;
+    path: string;
 }
+

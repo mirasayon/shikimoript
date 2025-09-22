@@ -1,5 +1,5 @@
 import type { DateTime } from "./common.js";
-import type { AnimeBasicData } from "./anime.js";
+import type { AnimeBasicData } from "./animes.js";
 
 export interface Episode {
     next_episode: number;

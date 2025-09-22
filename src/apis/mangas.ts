@@ -1,7 +1,7 @@
-import type { ExternalLink } from "../types/external-link.js";
-import type { Franchise } from "../types/franchise.js";
+import type { ExternalLinkData } from "../types/external-link.js";
+import type { FranchiseData } from "../types/franchise.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
-import type { MangaData, MangaBasicData, MangaId, MangaKind, MangaOrder, MangaRelation, MangaStatus } from "../types/manga.js";
+import type { MangaData, MangaBasicData, MangaId, MangaKind, MangaOrder, MangaRelationData, MangaStatus } from "../types/manga.js";
 import type { RoleData } from "../types/role.js";
 import type { TopicData } from "../types/topic.js";
 import type { UserRateStatus } from "../types/user-rate.js";
@@ -41,9 +41,9 @@ export class MangasApi {
         const byId = ({ id }: IdField<MangaId>): Promise<MangaData> => request(`/mangas/${id}`, {}, "GET");
         const roles = ({ id }: IdField<MangaId>): Promise<RoleData[]> => request(`/mangas/${id}/roles`, {}, "GET");
         const similar = ({ id }: IdField<MangaId>): Promise<MangaBasicData[]> => request(`/mangas/${id}/similar`, {}, "GET");
-        const related = ({ id }: IdField<MangaId>): Promise<MangaRelation[]> => request(`/mangas/${id}/relation`, {}, "GET");
-        const franchise = ({ id }: IdField<MangaId>): Promise<Franchise> => request(`/mangas/${id}/franchise`, {}, "GET");
-        const externalLinks = ({ id }: IdField<MangaId>): Promise<ExternalLink[]> => request(`/mangas/${id}/external_links`, {}, "GET");
+        const related = ({ id }: IdField<MangaId>): Promise<MangaRelationData[]> => request(`/mangas/${id}/related`, {}, "GET");
+        const franchise = ({ id }: IdField<MangaId>): Promise<FranchiseData> => request(`/mangas/${id}/franchise`, {}, "GET");
+        const externalLinks = ({ id }: IdField<MangaId>): Promise<ExternalLinkData[]> => request(`/mangas/${id}/external_links`, {}, "GET");
         const topics = ({ id, ...params }: MangaTopicsParams): Promise<TopicData<MangaBasicData>[]> => request(`/mangas/${id}/topics`, params, "GET");
 
         this.list = list;
@@ -84,19 +84,19 @@ export class MangasApi {
      * Получить список связанной манги
      * @param params Параметры запроса (содержат `id`)
      */
-    public readonly related: ({ id }: IdField<MangaId>) => Promise<MangaRelation[]>;
+    public readonly related: ({ id }: IdField<MangaId>) => Promise<MangaRelationData[]>;
 
     /**
      * Получить всю франшизу
      * @param params Параметры запроса (содержат `id`)
      */
-    public readonly franchise: ({ id }: IdField<MangaId>) => Promise<Franchise>;
+    public readonly franchise: ({ id }: IdField<MangaId>) => Promise<FranchiseData>;
 
     /**
      * Получить список внешних ссылок манги
      * @param params Параметры запроса (содержат `id`)
      */
-    public readonly externalLinks: ({ id }: IdField<MangaId>) => Promise<ExternalLink[]>;
+    public readonly externalLinks: ({ id }: IdField<MangaId>) => Promise<ExternalLinkData[]>;
 
     /**
      * Получить список топиков манги

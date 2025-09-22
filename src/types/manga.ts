@@ -1,6 +1,7 @@
+import type { AnimeBasicData } from "./animes.js";
 import type { CommonContentData, ContentRelation } from "./content.js";
 import type { GenreData } from "./genre.js";
-import type { Publisher } from "./publisher.js";
+import type { PublisherData } from "./publisher.js";
 
 export type MangaId = number;
 export type MangaKind = "manga" | "manhwa" | "manhua" | "one_shot" | "doujin";
@@ -27,11 +28,14 @@ export interface MangaData extends CommonContentData {
     genres: GenreData<"Manga">[];
     volumes: number;
     chapters: number;
-    publishers: Publisher[];
+    publishers: PublisherData[];
 }
 
 /** @interface */
-export type MangaRelation = ContentRelation & { manga: MangaBasicData };
+export interface MangaRelationData extends ContentRelation {
+    manga: MangaBasicData | null;
+    anime: AnimeBasicData | null;
+}
 /** @interface */
 export type MangaBasicData = Pick<
     MangaData,

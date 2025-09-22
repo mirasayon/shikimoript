@@ -1,5 +1,5 @@
 import type { DateTime } from "./common.js";
-import type { AnimeBasicData, AnimeId } from "./anime.js";
+import type { AnimeBasicData, AnimeId } from "./animes.js";
 import type { MangaBasicData, MangaId } from "./manga.js";
 import type { RanobeId } from "./ranobe.js";
 import type { UserBasic, UserId } from "./user.js";

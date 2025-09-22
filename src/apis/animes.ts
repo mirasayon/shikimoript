@@ -9,9 +9,9 @@ import type {
     AnimeBasicData,
     AnimeData,
     AnimeRelationData,
-} from "../types/anime.js";
-import type { ExternalLink } from "../types/external-link.js";
-import type { Franchise } from "../types/franchise.js";
+} from "../types/animes.js";
+import type { ExternalLinkData } from "../types/external-link.js";
+import type { FranchiseData } from "../types/franchise.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";
 import type { ScreenshotData } from "../types/image.js";
 import type { RoleData } from "../types/role.js";
@@ -65,9 +65,9 @@ export class AnimesApi {
 
         const screenshots = ({ id }: IdField<AnimeId>): Promise<ScreenshotData[]> => request(`/animes/${id}/screenshots`, {}, "GET");
 
-        const franchise = ({ id }: IdField<AnimeId>): Promise<Franchise> => request(`/animes/${id}/franchise`, {}, "GET");
+        const franchise = ({ id }: IdField<AnimeId>): Promise<FranchiseData> => request(`/animes/${id}/franchise`, {}, "GET");
 
-        const externalLinks = ({ id }: IdField<AnimeId>): Promise<ExternalLink[]> => request(`/animes/${id}/external_links`, {}, "GET");
+        const externalLinks = ({ id }: IdField<AnimeId>): Promise<ExternalLinkData[]> => request(`/animes/${id}/external_links`, {}, "GET");
 
         const topics = ({ id, ...params }: AnimesTopicsParams): Promise<TopicData<AnimeBasicData>[]> =>
             request(`/animes/${id}/topics`, params, "GET");

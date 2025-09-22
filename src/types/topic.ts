@@ -1,5 +1,5 @@
 import type { DateTime, LinkedId, LinkedType } from "./common.js";
-import type { Forum } from "./forum.js";
+import type { ForumData } from "./forum.js";
 import type { UserBasic } from "./user.js";
 
 export type TopicId = number;
@@ -47,7 +47,7 @@ export interface TopicData<T extends {} = {}> {
     html_footer: string;
     created_at: DateTime;
     comments_count: number;
-    forum: Forum;
+    forum: ForumData;
     user: UserBasic;
     type: TopicType;
     linked_id: LinkedId;

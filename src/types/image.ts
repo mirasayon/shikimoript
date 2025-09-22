@@ -14,5 +14,8 @@ export interface ImageData {
 }
 
 /** @interface */
-export type ScreenshotData = { [key in "original" | "preview"]: string };
+export type ScreenshotData = {
+    original: string;
+    preview: string;
+};
 

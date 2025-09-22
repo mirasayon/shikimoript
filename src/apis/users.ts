@@ -1,4 +1,4 @@
-import type { AnimeBasicData } from "../types/anime.js";
+import type { AnimeBasicData } from "../types/animes.js";
 import type { BanData } from "../types/ban.js";
 import type { ClubBasic } from "../types/club.js";
 import type { ApiRequestHandler } from "../types/auth-layer-api-options.js";

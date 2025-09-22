@@ -1,6 +1,6 @@
 import type { CommonContentData, ContentRelation } from "./content.js";
 import type { GenreData } from "./genre.js";
-import type { Publisher } from "./publisher.js";
+import type { PublisherData } from "./publisher.js";
 
 export type RanobeId = number;
 export type RanobeStatus = "anons" | "ongoing" | "released" | "paused" | "discontinued";
@@ -27,7 +27,7 @@ export interface Ranobe extends CommonContentData {
     genres: GenreData<"Manga">[];
     volumes: number;
     chapters: number;
-    publishers: Publisher[];
+    publishers: PublisherData[];
 }
 
 /** @interface */

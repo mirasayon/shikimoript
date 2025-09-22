@@ -1,7 +1,12 @@
 /** @interface */
-export type NoticeType = { notice: string };
+export interface NoticeType {
+    notice: string;
+}
 /** @interface */
-export type NoticeSuccess = NoticeType & { success: boolean };
+export interface NoticeSuccess {
+    notice: NoticeType["notice"];
+    success: boolean;
+}
 
 export type DateTime = string;
 
