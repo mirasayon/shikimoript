@@ -1,6 +1,6 @@
 {
     "name": "shikimoript",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "SHIKIMORI for javascriPT - Universal shikimori.one API wrapper for modern Javascript",
     "type": "module",
     "exports": {
